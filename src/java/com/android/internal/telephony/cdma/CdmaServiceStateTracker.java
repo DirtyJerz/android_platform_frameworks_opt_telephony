@@ -674,7 +674,7 @@ public class CdmaServiceStateTracker extends ServiceStateTracker {
                 // list of ERIs for home system, mCdmaRoaming is true.
                 mCdmaRoaming =
                         regCodeIsRoaming(registrationState) && !isRoamIndForHomeSystem(states[10]);
-                mNewSS.setState (regCodeToServiceState(registrationState));
+                mNewSS.setVoiceRegState (regCodeToServiceState(registrationState));
 
                 mNewSS.setRilVoiceRadioTechnology(radioTechnology);
 

@@ -650,7 +650,7 @@ final class GsmServiceStateTracker extends ServiceStateTracker {
                     }
 
                     mGsmRoaming = regCodeIsRoaming(regState);
-                    mNewSS.setState(regCodeToServiceState(regState));
+                    mNewSS.setVoiceRegState(regCodeToServiceState(regState));
                     mNewSS.setRilVoiceRadioTechnology(type);
 
                     boolean isVoiceCapable = mPhoneBase.getContext().getResources()
