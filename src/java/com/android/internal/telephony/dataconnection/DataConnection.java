@@ -339,7 +339,7 @@ public final class DataConnection extends StateMachine {
     }
 
     private String getRetryConfig(boolean forDefault) {
-        int nt = mPhone.getServiceState().getNetworkType();
+        int nt = mPhone.getServiceState().getVoiceNetworkType();
 
         if (Build.IS_DEBUGGABLE) {
             String config = SystemProperties.get("test.data_retry_config");
