@@ -353,6 +353,9 @@ public class CdmaLteServiceStateTracker extends CdmaServiceStateTracker {
         if (hasDataRadioTechnologyChanged) {
             mPhone.setSystemProperty(TelephonyProperties.PROPERTY_DATA_NETWORK_TYPE,
                     ServiceState.rilRadioTechnologyToString(mSS.getRilDataRadioTechnology()));
+            SystemProperties.set("persist.radio.apn_delay", "5000");
+            SystemProperties.set("ro.cdma.data_retry_config","max_retries=infinite,2000,5000,10000");
+            if (DBG) log("pollStateDone: SET APN_DELAY TO: 5000  ****dirtyjerz");
         }
 
         if (hasRegistered) {
@@ -442,6 +445,9 @@ public class CdmaLteServiceStateTracker extends CdmaServiceStateTracker {
 
         if (hasCdmaDataConnectionAttached || has4gHandoff) {
             mAttachedRegistrants.notifyRegistrants();
+            SystemProperties.set("persist.radio.apn_delay", "");
+            SystemProperties.set("ro.cdma.data_retry_config", "");
+            if (DBG) log("pollStateDone: cleared APN_DELAY  ****dirtyjerz");
         }
 
         if (hasCdmaDataConnectionDetached) {
